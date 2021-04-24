@@ -1,12 +1,8 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3000/properties";
-const mock = [
-  { name: "Apartamento em Santo Agostinho", price: 300000 },
-  { name: "Cobertura em Santo Agostinho", price: 600000 },
-];
+const baseUrl = "http://localhost:3001/properties";
 
-export const findAll = () => {
-  // return axios.get(baseUrl);
-  return Promise.resolve(mock);
+export const findAll = async () => {
+  const { data } = await axios.get(baseUrl);
+  return data;
 };
