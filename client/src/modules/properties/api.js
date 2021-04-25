@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:3001/properties";
+const baseUrl = `${process.env.REACT_APP_API_URL}/properties`;
 
 export const findAll = async () => {
   const { data } = await axios.get(baseUrl);
