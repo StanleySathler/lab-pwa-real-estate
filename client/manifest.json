@@ -1,0 +1,17 @@
+{
+  "short_name": "iProperties",
+  "name": "iProperties: Find your next property",
+  "icons": [
+    {
+      "src": "/images/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/?source=pwa",
+  "background_color": "#ee6e73",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#ee6e73",
+  "description": "Find the best properties around you"
+}
