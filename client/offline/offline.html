@@ -1,0 +1,15 @@
+<html>
+  <body>
+    <h1>Whooops, you're offline!</h1>
+    <button id="refresh">Reload</button>
+  </body>
+  <script>
+    document.querySelector("#refresh").addEventListener("click", () => {
+      window.location.reload();
+    });
+
+    window.addEventListener("online", () => {
+      window.location.reload();
+    });
+  </script>
+</html>
