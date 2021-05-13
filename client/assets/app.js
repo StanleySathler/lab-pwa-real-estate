@@ -16,15 +16,15 @@ window.addEventListener("load", async () => {
  * App.
  */
 (async () => {
-  const fetch = async () => {
-    const { data: properties } = await axios.get(
-      "https://lab-pwa-real-estate.herokuapp.com/properties"
-    );
+  const renderProperties = async () => {
+    const fetch = async () => {
+      const { data: properties } = await axios.get(
+        "https://lab-pwa-real-estate.herokuapp.com/properties"
+      );
 
-    return properties;
-  };
+      return properties;
+    };
 
-  const render = (properties) => {
     const buildRow = () => {
       const $root = document.createElement("div");
       $root.classList.add("row");
@@ -55,6 +55,8 @@ window.addEventListener("load", async () => {
       return $root;
     };
 
+    const properties = await fetch();
+
     const $propertiesContainer = document.querySelector("#properties");
     const $wrapper = buildRow();
 
@@ -66,6 +68,22 @@ window.addEventListener("load", async () => {
     $propertiesContainer.append($wrapper);
   };
 
-  const properties = await fetch();
-  render(properties);
+  const renderConnectionMessage = async () => {
+    const hasConnection = window.navigator.onLine;
+
+    if (!hasConnection) {
+      const $wrapper = document.createElement("div");
+      $wrapper.classList.add("alert__no-connection");
+
+      const $text = document.createTextNode(
+        "You have no internet connection. The data you see may be outdated. Please connect to a network to see the most recent data."
+      );
+
+      $wrapper.appendChild($text);
+      document.querySelector("#alerts").appendChild($wrapper);
+    }
+  };
+
+  await renderProperties();
+  renderConnectionMessage();
 })();
