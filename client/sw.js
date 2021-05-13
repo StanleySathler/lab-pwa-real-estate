@@ -2,6 +2,7 @@ self.addEventListener("install", () => {});
 
 const appShellReqs = [
   "/",
+  "/assets/app.js",
   "/assets/app.css",
   "/ajax/libs/materialize/1.0.0/css/materialize.min.css",
 ];
