@@ -1,51 +1,53 @@
-/**
- * Called once SW is installed. It only happens once for each
- * version.
- */
-self.addEventListener("install", (event) => {
-  console.log("[SW] Installed.", event);
+self.addEventListener("install", () => {});
 
-  const fetchAndCacheOfflinePage = async () => {
-    // Get a ref. to the cache
-    const cache = await caches.open("offline-fallback-page");
+const appShellReqs = [
+  "/",
+  "/app.js",
+  "/axios/dist/axios.min.js",
+  "/app.css",
+  "/ajax/libs/materialize/1.0.0/css/materialize.min.css",
+];
 
-    // {cache: 'reload'} means this will be served not from the cache
-    // but from the network (as if we were updating the cache).
-    await cache.add(new Request("/offline/offline.html", { cache: "reload" }));
-  };
-
-  event.waitUntil(fetchAndCacheOfflinePage());
-
-  // Apply new SW version immediately rather than wait until
-  // the old version is not controlling anyone.
-  self.skipWaiting();
-});
+const dataReqs = ["/properties"];
 
 /**
- * Called once SW is ready to handle events like fetch.
- * It only happens once for each version.
+ * Called whenever any resource is fetched.
  */
-self.addEventListener("activate", (event) => {
-  console.log("[SW] Activated.", event);
-  self.clients.claim();
-});
-
 self.addEventListener("fetch", (event) => {
-  if (event.request.mode !== "navigate") return;
+  const { request } = event;
+  const { pathname } = new URL(request.url);
 
-  const fetchOrFallback = async () => {
-    // Let browser handle the request.
-    try {
-      return await fetch(event.request);
-    } catch (err) {
-      // But if it fails it's probably 'cause it's offline, so
-      // fetch offline page from cache.
-      console.log("[SW] Fetch failed. Fetching offline page from cache.", err);
+  if (appShellReqs.includes(pathname)) {
+    return event.respondWith(
+      (async () => {
+        const cache = await caches.open("v1");
+        try {
+          const response = await fetch(request);
+          cache.put(request, response.clone());
+          return response;
+        } catch (err) {
+          console.error("pff", err);
+          return cache.match(request);
+        }
+      })()
+    );
+  }
 
-      const cache = await caches.open("offline-fallback-page");
-      return await cache.match("/offline/offline.html");
-    }
-  };
+  if (dataReqs.includes(pathname)) {
+    return event.respondWith(
+      (async () => {
+        const cache = await caches.open("data/v1");
+        try {
+          const response = await fetch(request);
+          cache.put(request, response.clone());
+          return response;
+        } catch (err) {
+          console.error("pff", err);
+          return cache.match(request);
+        }
+      })()
+    );
+  }
 
-  event.respondWith(fetchOrFallback());
+  return;
 });
