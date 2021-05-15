@@ -1,0 +1,11 @@
+{
+  "name": "pwa-real-estate-client",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "Stanley Sathler",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "webpack": "^5.37.0"
+  }
+}
