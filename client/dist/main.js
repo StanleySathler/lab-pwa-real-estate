@@ -9,6 +9,17 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/app.css":
+/*!*********************!*\
+  !*** ./src/app.css ***!
+  \*********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://pwa-real-estate-client/./src/app.css?");
+
+/***/ }),
+
 /***/ "./src/index.js":
 /*!**********************!*\
   !*** ./src/index.js ***!
@@ -16,7 +27,7 @@
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sw__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./sw */ \"./src/sw/index.js\");\n/* harmony import */ var _sw__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_sw__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _properties__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./properties */ \"./src/properties/index.js\");\n/* harmony import */ var _properties__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_properties__WEBPACK_IMPORTED_MODULE_1__);\n\n\n\n\n//# sourceURL=webpack://pwa-real-estate-client/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _app_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./app.css */ \"./src/app.css\");\n/* harmony import */ var _sw__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sw */ \"./src/sw/index.js\");\n/* harmony import */ var _sw__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_sw__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _properties__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./properties */ \"./src/properties/index.js\");\n/* harmony import */ var _properties__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_properties__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\n\n//# sourceURL=webpack://pwa-real-estate-client/./src/index.js?");
 
 /***/ }),
 
