@@ -2,7 +2,7 @@
   const renderProperties = async () => {
     const fetch = async () => {
       const { data: properties } = await axios.get(
-        "https://lab-pwa-real-estate.herokuapp.com/properties"
+        `${process.env.API_URL}/properties`
       );
 
       return properties;
