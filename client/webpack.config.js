@@ -8,7 +8,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
   },
-  plugins: [new DotenvPlugin(), new MiniCssExtractPlugin()],
+  plugins: [new DotenvPlugin({ systemvars: true }), new MiniCssExtractPlugin()],
   module: {
     rules: [
       {
