@@ -1,0 +1,17 @@
+name: "Deploy Heroku RA"
+description: "Deploy Heroku Review App"
+inputs:
+  source-code-dir:
+    description: "Absolute path to the source-code"
+    required: true
+  heroku-api-key:
+    description: "Heroku API Key"
+    required: true
+outputs:
+  app-url:
+    description: "URL to the newly created Review App"
+  time: # id of output
+    description: "The time we greeted you"
+runs:
+  using: "node12"
+  main: "dist/index.js"

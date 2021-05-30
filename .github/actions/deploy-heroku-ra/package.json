@@ -1,0 +1,20 @@
+{
+  "name": "deploy-heroku-ra",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "ncc build index.js --license licenses.txt",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.3.0",
+    "@actions/github": "^5.0.0",
+    "@google-cloud/storage": "^5.8.5",
+    "@vercel/ncc": "^0.28.6",
+    "heroku-client": "^3.1.0"
+  }
+}
