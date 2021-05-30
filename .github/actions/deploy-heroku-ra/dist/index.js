@@ -69163,7 +69163,7 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(2186);
 
 const Heroku = __nccwpck_require__(504);
-const client = new Heroku({ token: core.getInput("herokou-api-key") });
+const client = new Heroku({ token: core.getInput("heroku-api-key") });
 
 const storage = __nccwpck_require__(9960);
 
@@ -69186,7 +69186,8 @@ const deleteReviewApp = async (app) =>
   client.delete(`/review-apps/${app.id}`, defaultOptions);
 
 const createReviewApp = async (sourceUrl) =>
-  client.post("/review-apps", defaultOptions, {
+  client.post("/review-apps", {
+    ...defaultOptions,
     body: {
       branch: process.env.GITHUB_REF_SLUG, // todo: use env
       pipeline: PIPELINE_ID, // todo: move to secrets

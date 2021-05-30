@@ -1,7 +1,7 @@
 const core = require("@actions/core");
 
 const Heroku = require("heroku-client");
-const client = new Heroku({ token: core.getInput("herokou-api-key") });
+const client = new Heroku({ token: core.getInput("heroku-api-key") });
 
 const storage = require("./storage");
 
@@ -24,7 +24,8 @@ const deleteReviewApp = async (app) =>
   client.delete(`/review-apps/${app.id}`, defaultOptions);
 
 const createReviewApp = async (sourceUrl) =>
-  client.post("/review-apps", defaultOptions, {
+  client.post("/review-apps", {
+    ...defaultOptions,
     body: {
       branch: process.env.GITHUB_REF_SLUG, // todo: use env
       pipeline: PIPELINE_ID, // todo: move to secrets
