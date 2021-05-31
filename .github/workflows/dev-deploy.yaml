@@ -4,7 +4,7 @@ jobs:
   heroku-deploy:
     runs-on: ubuntu-latest
     outputs:
-      app-url: ${{steps.create-ra.outputs.heroku-app-name}}
+      app-url: ${{steps.create-ra.outputs.app-url}}
     steps:
       - uses: actions/checkout@v2
       - uses: rlespinasse/github-slug-action@v3.x
