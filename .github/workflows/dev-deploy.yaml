@@ -12,13 +12,13 @@ jobs:
         with:
           type: tar
           directory: server
-          filename: ../server-${{env.GITHUB_REF_SLUG}}.tgz
+          filename: ../server-${{env.GITHUB_HEAD_REF_SLUG}}.tgz
           path: "."
       - run: ls ./
       - uses: ./.github/actions/deploy-heroku-ra
         id: create-ra
         with:
-          source-code-dir: ./server-${{env.GITHUB_REF_SLUG}}.tgz
+          source-code-dir: ./server-${{env.GITHUB_HEAD_REF_SLUG}}.tgz
           heroku-api-key: ${{secrets.HEROKU_API_KEY}}
           heroku-app-name: lab-pwa-real-estate-pr-${{github.event.number}}
           pr-number: ${{github.event.number}}
