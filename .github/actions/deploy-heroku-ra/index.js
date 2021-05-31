@@ -29,7 +29,7 @@ const createReviewApp = async (sourceUrl) =>
     body: {
       branch: process.env.GITHUB_REF_SLUG, // todo: use env
       pipeline: PIPELINE_ID, // todo: move to secrets
-      pr_number: core.getInput("pr-number"),
+      pr_number: Number(core.getInput("pr-number")),
       source_blob: { url: sourceUrl, version: "0.0.1" },
     },
   });
