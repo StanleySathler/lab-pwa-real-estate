@@ -21,6 +21,7 @@ jobs:
           source-code-dir: ./server-${{env.GITHUB_REF_SLUG}}.tgz
           heroku-api-key: ${{secrets.HEROKU_API_KEY}}
           heroku-app-name: lab-pwa-real-estate-pr-${{github.event.number}}
+          pr-number: ${{github-event-number}}
     # outputs:
     #   heroku-link: ${{ steps.review-app.outputs.heroku-link }}
     # steps:
