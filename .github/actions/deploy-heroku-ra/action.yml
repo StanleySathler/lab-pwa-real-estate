@@ -7,6 +7,9 @@ inputs:
   heroku-api-key:
     description: "Heroku API Key"
     required: true
+  heroku-app-name:
+    description: "Name given to the Review App"
+    required: true
 outputs:
   app-url:
     description: "URL to the newly created Review App"

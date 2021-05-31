@@ -69209,6 +69209,7 @@ const createApp = async (sourceUrl) => {
 
 const run = async () => {
   try {
+    const appName = core.getInput("heroku-app-name");
     const sourcePath = core.getInput("source-code-dir");
 
     core.info(`Publishing to Storage | source-code-dir: ${sourcePath}`);
@@ -69217,6 +69218,7 @@ const run = async () => {
     core.info(`Creating Review App | sourceUrl: ${sourceUrl}`);
     await createApp(sourceUrl);
 
+    core.setOutput("app-url", `https://${appName}.herokuapp.com`);
     core.info(`Heroku Review App was created!`);
   } catch (err) {
     console.error(err);
