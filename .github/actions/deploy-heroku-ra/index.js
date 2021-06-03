@@ -20,8 +20,19 @@ const defaultOptions = {
 const listReviewApps = async () =>
   client.get(`/pipelines/${PIPELINE_ID}/review-apps`, defaultOptions);
 
-const deleteReviewApp = async (app) =>
-  client.delete(`/review-apps/${app.id}`, defaultOptions);
+const deleteReviewApp = async (app) => {
+  const res = await client.delete(`/review-apps/${app.id}`, defaultOptions);
+  if (res.status === "pending") {
+    let completed = false;
+    while (!completed) {
+      const res2 = await client.get(`/review-apps/${app.id}`, defaultOptions);
+
+      console.log(">>>>> status", res2.status);
+
+      if (res2.status !== "pending") completed = true;
+    }
+  }
+};
 
 const createReviewApp = async (sourceUrl) =>
   client.post("/review-apps", {
