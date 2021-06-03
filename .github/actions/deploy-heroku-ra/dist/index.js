@@ -69183,18 +69183,39 @@ const defaultOptions = {
 const listReviewApps = async () =>
   client.get(`/pipelines/${PIPELINE_ID}/review-apps`, defaultOptions);
 
+const pollUntilDeleted = (app) => {
+  return new Promise((resolve, reject) => {
+    let fetchCount = 0;
+
+    const fetchAndCheck = () => {
+      client.delete(`/review-apps/${app.id}`, defaultOptions).then((res) => {
+        core.info(`Polling deletion process - last status: ${res.status}`);
+
+        fetchCount++;
+
+        if (res.status === "deleted") resolve(res);
+        else if (fetchCount > 5) reject("Deletion polling timed out!");
+        else setTimeout(fetchAndCheck, 5000);
+      });
+    };
+
+    setTimeout(fetchAndCheck, 5000);
+  });
+};
+
 const deleteReviewApp = async (app) => {
   core.info("Removing Review App for this PR.");
   const res = await client.delete(`/review-apps/${app.id}`, defaultOptions);
   core.debug(res);
-  if (res.status !== "deleted") {
-    let deleted = false;
-    while (!deleted) {
-      const res2 = await client.get(`/review-apps/${app.id}`, defaultOptions);
-      core.info(`Polling deletion process - last status: ${res2.status}`);
-      if (res2.status === "deleted") deleted = true;
-    }
-  }
+  await pollUntilDeleted(app);
+  // if (res.status !== "deleted") {
+  //   let deleted = false;
+  //   while (!deleted) {
+  //     const res2 = await client.get(`/review-apps/${app.id}`, defaultOptions);
+  //     core.info(`Polling deletion process - last status: ${res2.status}`);
+  //     if (res2.status === "deleted") deleted = true;
+  //   }
+  // }
   core.info("Review App for this PR removed.");
 };
 
