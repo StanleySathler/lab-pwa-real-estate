@@ -34,6 +34,7 @@ const deleteReviewApp = async (app) => {
       if (res2.status !== "pending") completed = true;
     }
   }
+  core.info("Review App for this PR removed.");
 };
 
 const createReviewApp = async (sourceUrl) =>
@@ -67,8 +68,6 @@ const createApp = async (sourceUrl) => {
 
 const run = async () => {
   try {
-    console.log(">>>>>> PR NUMBER", core.getInput("pr-number"));
-
     const appName = core.getInput("heroku-app-name");
     const sourcePath = core.getInput("source-code-dir");
 
