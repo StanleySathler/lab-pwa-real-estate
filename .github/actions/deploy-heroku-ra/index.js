@@ -25,7 +25,7 @@ const deleteReviewApp = async (app) => {
   core.info("Removing Review App for this PR.");
   const res = await client.delete(`/review-apps/${app.id}`, defaultOptions);
   core.debug(res);
-  if (res.status === "pending") {
+  if (res.status !== "created") {
     let completed = false;
     while (!completed) {
       const res2 = await client.get(`/review-apps/${app.id}`, defaultOptions);
