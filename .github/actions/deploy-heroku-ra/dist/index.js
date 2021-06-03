@@ -69183,6 +69183,7 @@ const listReviewApps = async () =>
   client.get(`/pipelines/${PIPELINE_ID}/review-apps`, defaultOptions);
 
 const deleteReviewApp = async (app) => {
+  core.info("Removing Review App for this PR.");
   const res = await client.delete(`/review-apps/${app.id}`, defaultOptions);
   if (res.status === "pending") {
     let completed = false;
@@ -69214,7 +69215,13 @@ const createApp = async (sourceUrl) => {
   const apps = await listReviewApps();
   const app = findByBranch(apps, currentBranch);
 
-  if (app) await deleteReviewApp(app);
+  core.debug(`currentBranch: ${currentBranch}`);
+  core.debug(apps);
+
+  if (app) {
+    core.info("A Review App for this PR exists.");
+    await deleteReviewApp(app);
+  }
 
   await createReviewApp(sourceUrl);
 };
