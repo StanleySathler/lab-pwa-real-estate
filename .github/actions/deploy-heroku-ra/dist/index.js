@@ -69190,10 +69190,8 @@ const deleteReviewApp = async (app) => {
     let completed = false;
     while (!completed) {
       const res2 = await client.get(`/review-apps/${app.id}`, defaultOptions);
-
-      console.log(">>>>> status", res2.status);
-
-      if (res2.status !== "pending") completed = true;
+      core.info(`Polling deletion process - last status: ${res2.status}`);
+      if (res2.status === "created") completed = true;
     }
   }
   core.info("Review App for this PR removed.");
