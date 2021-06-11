@@ -14,7 +14,6 @@ jobs:
           directory: server
           filename: ../server-${{env.GITHUB_HEAD_REF_SLUG}}.tgz
           path: "."
-      - run: ls ./
       - uses: ./.github/actions/deploy-heroku-ra
         id: create-ra
         with:
