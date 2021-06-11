@@ -8,6 +8,7 @@ const mock = [
   { name: "Apartamento em Santo Agostinho", price: 300000 },
   { name: "Cobertura em Santo Agostinho", price: 600000 },
   { name: "Mansão no Mangabeiras", price: 6000000 },
+  { name: "Hollywood Mansion", price: 1000000 },
 ];
 
 app.use(cors());
