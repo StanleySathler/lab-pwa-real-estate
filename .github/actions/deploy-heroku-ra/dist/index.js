@@ -69170,9 +69170,9 @@ const storage = __nccwpck_require__(9960);
 /**
  * @todo: move this secret data to env
  */
-const PIPELINE_ID = "6f0589a9-927b-4d01-add3-642b8fdb479a";
-const AUTH_TOKEN = "aa9af670-a72c-4898-9e53-df0a4e1cec0b";
-const BRANCH_NAME = process.env.GITHUB_HEAD_REF_SLUG;
+const PIPELINE_ID = core.getInput("pipeline-id");
+const AUTH_TOKEN = core.getInput("heroku-api-key");
+const BRANCH_NAME = core.getInput("branch-name");
 
 const defaultOptions = {
   headers: {
@@ -69208,14 +69208,6 @@ const deleteReviewApp = async (app) => {
   const res = await client.delete(`/review-apps/${app.id}`, defaultOptions);
   core.debug(res);
   await pollUntilDeleted(app);
-  // if (res.status !== "deleted") {
-  //   let deleted = false;
-  //   while (!deleted) {
-  //     const res2 = await client.get(`/review-apps/${app.id}`, defaultOptions);
-  //     core.info(`Polling deletion process - last status: ${res2.status}`);
-  //     if (res2.status === "deleted") deleted = true;
-  //   }
-  // }
   core.info("Review App for this PR removed.");
 };
 

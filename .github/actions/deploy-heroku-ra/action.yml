@@ -13,11 +13,13 @@ inputs:
   heroku-app-name:
     description: "Name given to the Review App"
     required: true
+  pipeline-id:
+    required: true
+  branch-name:
+    required: true
 outputs:
   app-url:
     description: "URL to the newly created Review App"
-  time: # id of output
-    description: "The time we greeted you"
 runs:
-  using: "node12"
+  using: "node14"
   main: "dist/index.js"
