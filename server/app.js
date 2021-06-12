@@ -5,8 +5,9 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 const mock = [
-  { name: "Apartamento em Santo Agostinho", price: 300000 },
-  { name: "Cobertura em Santo Agostinho", price: 600000 },
+  { name: "Castillo", price: 300000 },
+  { name: "Summerwind", price: 600000 },
+  { name: "Casa Piña", price: 100000 },
 ];
 
 app.use(cors());
