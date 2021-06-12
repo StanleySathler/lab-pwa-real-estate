@@ -21,5 +21,5 @@ outputs:
   app-url:
     description: "URL to the newly created Review App"
 runs:
-  using: "node14"
+  using: "node12"
   main: "dist/index.js"
