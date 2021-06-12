@@ -17,6 +17,8 @@ jobs:
       - uses: ./.github/actions/deploy-heroku-ra
         id: create-ra
         with:
+          pipeline-id: 6f0589a9-927b-4d01-add3-642b8fdb479a
+          branch-name: ${{env.GITHUB_HEAD_REF_SLUG}}
           source-code-dir: ./server-${{env.GITHUB_HEAD_REF_SLUG}}.tgz
           heroku-api-key: ${{secrets.HEROKU_API_KEY}}
           heroku-app-name: lab-pwa-real-estate-pr-${{github.event.number}}
