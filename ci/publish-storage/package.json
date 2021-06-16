@@ -1,9 +1,0 @@
-{
-  "name": "publish-storage",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "devDependencies": {
-    "@google-cloud/storage": "^5.8.5"
-  }
-}
