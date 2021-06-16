@@ -14,8 +14,14 @@ jobs:
           directory: server
           filename: ../server-${{env.GITHUB_HEAD_REF_SLUG}}.tgz
           path: "."
-      - uses: ./.github/actions/deploy-heroku-ra
-        id: create-ra
+      - id: upload
+        uses: google-github-actions/upload-cloud-storage@main
+        with:
+          path: ./server-${{env.GITHUB_HEAD_REF_SLUG}}.tgz
+          destination: pr-server-tars/server-${{env.GITHUB_HEAD_REF_SLUG}}.tgz
+      - run: echo "Link ${{steps.upload.outputs.uploaded}}"
+      - id: create-ra
+        uses: ./.github/actions/deploy-heroku-ra
         with:
           pipeline-id: 6f0589a9-927b-4d01-add3-642b8fdb479a
           branch-name: ${{env.GITHUB_HEAD_REF_SLUG}}
