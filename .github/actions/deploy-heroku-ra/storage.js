@@ -1,14 +1,10 @@
 const path = require("path");
 const { Storage } = require("@google-cloud/storage");
 
-const ROOT_PATH = path.join(__dirname, "../../../");
 const TAR_FILE_NAME = `server-${process.env.GITHUB_REF_SLUG}.tgz`;
 const BUCKET_NAME = "pr-server-tars";
 
-const client = new Storage({
-  projectId: "lab-pwa-real-estate",
-  keyFilename: path.join(__dirname, "./google-service-account.json"),
-});
+const client = new Storage();
 
 const upload = async (sourcePath) => {
   return await client.bucket(BUCKET_NAME).upload(sourcePath, {
