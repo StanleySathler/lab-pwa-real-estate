@@ -37,7 +37,7 @@ jobs:
       - uses: amondnet/vercel-action@v20
         with:
           vercel-args: --build-env API_URL=${{ needs.heroku-deploy.outputs.app-url }} #Optional
-          vercel-token: V8c8P1WTKaIV1YpgZuEjCZLI # Required
-          vercel-org-id: HcwgMHjLOtykGfTD6TtM0ChG #Required
-          vercel-project-id: prj_ejffl8r3PjAPqXYvxDhLoLDC0NdD #Required
+          vercel-token: ${{secrets.VERCEL_TOKEN}}
+          vercel-org-id: ${{secrets.VERCEL_ORG_ID}}
+          vercel-project-id: ${{secrets.VERCEL_ORG_ID}}
           working-directory: ./client
