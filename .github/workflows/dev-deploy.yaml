@@ -11,8 +11,6 @@ jobs:
         with:
           service_account_key: ${{secrets.GCP_SA_KEY}}
           export_default_credentials: true
-      - run: ls ${{env.GITHUB_WORKSPACE}}
-      - run: pwd
       - uses: rlespinasse/github-slug-action@v3.x
       - uses: thedoctor0/zip-release@master
         with:
