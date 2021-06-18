@@ -1,0 +1,41 @@
+name: "DEV: Deploy"
+on: pull_request
+jobs:
+  heroku-deploy:
+    runs-on: ubuntu-latest
+    outputs:
+      app-url: ${{steps.create-ra.outputs.app-url}}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: google-github-actions/setup-gcloud@master
+        with:
+          service_account_key: ${{secrets.GCP_SA_KEY}}
+          export_default_credentials: true
+      - uses: rlespinasse/github-slug-action@v3.x
+      - uses: thedoctor0/zip-release@master
+        with:
+          type: tar
+          directory: server
+          filename: ../server-${{env.GITHUB_HEAD_REF_SLUG}}.tgz
+          path: "."
+      - id: create-ra
+        uses: ./.github/actions/deploy-heroku-ra
+        with:
+          pipeline-id: ${{secrets.HEROKU_PIPELINE_ID}}
+          branch-name: ${{env.GITHUB_HEAD_REF_SLUG}}
+          source-code-dir: ./server-${{env.GITHUB_HEAD_REF_SLUG}}.tgz
+          heroku-api-key: ${{secrets.HEROKU_API_KEY}}
+          heroku-app-name: lab-pwa-real-estate-pr-${{github.event.number}}
+          pr-number: ${{github.event.number}}
+  vercel-deploy:
+    runs-on: ubuntu-latest
+    needs: [heroku-deploy]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: amondnet/vercel-action@v20
+        with:
+          vercel-args: --build-env API_URL=${{ needs.heroku-deploy.outputs.app-url }} #Optional
+          vercel-token: ${{secrets.VERCEL_TOKEN}}
+          vercel-org-id: ${{secrets.VERCEL_ORG_ID}}
+          vercel-project-id: ${{secrets.VERCEL_PROJECT_ID}}
+          working-directory: ./client
