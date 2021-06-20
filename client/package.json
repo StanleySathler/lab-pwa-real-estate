@@ -13,12 +13,14 @@
     }
   },
   "scripts": {
-    "dev": "npm-watch dev:build",
+    "dev:serve": "npx http-server .",
+    "dev:watch": "npm-watch dev:build",
     "dev:build": "npx webpack"
   },
   "devDependencies": {
     "css-loader": "^5.2.4",
     "dotenv-webpack": "^7.0.2",
+    "http-server": "^0.12.3",
     "mini-css-extract-plugin": "^1.6.0",
     "npm-watch": "^0.10.0",
     "vercel": "^22.0.1",
