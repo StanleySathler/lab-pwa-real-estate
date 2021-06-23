@@ -5,7 +5,6 @@ const appShellReqs = [
   "/dist/main.js",
   "/axios/dist/axios.min.js",
   "/dist/main.css",
-  "/ajax/libs/materialize/1.0.0/css/materialize.min.css",
 ];
 
 const dataReqs = ["/properties"];

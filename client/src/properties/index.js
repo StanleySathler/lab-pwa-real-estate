@@ -1,3 +1,5 @@
+import "./ui.css";
+
 (async () => {
   const renderProperties = async () => {
     const fetch = async () => {
