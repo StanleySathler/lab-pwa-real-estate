@@ -1,43 +1,30 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <link rel="manifest" href="/manifest.json" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="./dist/main.css" />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
-
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script
-      defer
-      src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
-    ></script>
-
     <script defer src="./dist/main.js"></script>
   </head>
   <body class="app">
     <div id="alerts">
       <!-- Alerts are injected here by our JavaScript. -->
     </div>
-    <header>
-      <nav>
-        <div class="container nav-wrapper">
-          <a href="#" class="brand-logo">Properties</a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#">Rent</a></li>
-            <li><a href="#">Buy</a></li>
-          </ul>
-        </div>
-      </nav>
+
+    <header class="header">
+      <div class="container">iProperties</div>
     </header>
-    <main>
-      <div class="container" id="properties">
+
+    <main class="properties-list">
+      <div class="container" id="properties-content">
         <!-- Properties are injected here. -->
       </div>
     </main>

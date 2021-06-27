@@ -1,3 +1,5 @@
+import "reset-css";
 import "./app.css";
 import "./sw";
-import "./properties";
+import "./design-system";
+import "./screens/home";

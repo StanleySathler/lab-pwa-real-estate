@@ -1,0 +1,13 @@
+.cat {
+  cursor: pointer;
+  padding: 8px;
+  background: #ffa12e;
+  border-radius: 5px;
+  color: white;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.cat:hover {
+  background: #c97f24;
+}

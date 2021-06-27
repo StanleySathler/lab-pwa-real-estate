@@ -3,9 +3,8 @@ self.addEventListener("install", () => {});
 const appShellReqs = [
   "/",
   "/dist/main.js",
-  "/axios/dist/axios.min.js",
   "/dist/main.css",
-  "/ajax/libs/materialize/1.0.0/css/materialize.min.css",
+  "https://fonts.googleapis.com/css2?family=Hind:wght@400;500&display=swap",
 ];
 
 const dataReqs = ["/properties"];
