@@ -1,3 +1,7 @@
 .properties-list {
   padding: 16px;
 }
+
+.properties-list .property {
+  margin-bottom: 16px;
+}

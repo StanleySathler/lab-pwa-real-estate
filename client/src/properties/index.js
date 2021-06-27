@@ -1,4 +1,4 @@
-import "./ui.css";
+import PropertyCard from "../design-system/property-card";
 
 (async () => {
   const renderProperties = async () => {
@@ -10,47 +10,18 @@ import "./ui.css";
       return properties;
     };
 
-    const buildRow = () => {
-      const $root = document.createElement("div");
-      $root.classList.add("row");
+    let properties = await fetch();
+    properties = properties.concat(properties).concat(properties);
 
-      return $root;
-    };
-
-    const buildCard = ({ name }) => {
-      const $root = document.createElement("div");
-      $root.classList.add("col", "s12", "m6", "l4");
-
-      const $card = document.createElement("div");
-      $card.classList.add("card", "blue-grey", "darken-1");
-
-      const $header = document.createElement("div");
-      $header.classList.add("card-content", "white-text");
-
-      const $name = document.createElement("span");
-      $name.classList.add("card-title");
-
-      const $nameText = document.createTextNode(name);
-
-      $name.append($nameText);
-      $header.append($name);
-      $card.append($header);
-      $root.append($card);
-
-      return $root;
-    };
-
-    const properties = await fetch();
-
-    const $propertiesContainer = document.querySelector("#properties");
-    const $wrapper = buildRow();
+    const $propertiesContainer = document.querySelector("#properties-content");
 
     properties.forEach((property) => {
-      const $card = buildCard(property);
-      $wrapper.append($card);
+      const $propertyCard = PropertyCard.render({
+        ...property,
+        label: "Show more",
+      });
+      $propertiesContainer.appendChild($propertyCard);
     });
-
-    $propertiesContainer.append($wrapper);
   };
 
   const renderConnectionMessage = async () => {

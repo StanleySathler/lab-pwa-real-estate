@@ -1,4 +1,5 @@
 .cat {
+  cursor: pointer;
   padding: 8px;
   background: #ffa12e;
   border-radius: 5px;
