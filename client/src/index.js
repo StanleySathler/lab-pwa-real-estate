@@ -1,3 +1,4 @@
+import "reset-css";
 import "./app.css";
 import "./sw";
 import "./design-system";

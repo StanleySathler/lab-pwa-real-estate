@@ -1,10 +1,11 @@
+import Axios from "axios";
 import PropertyCard from "../design-system/property-card";
 import "./home.css";
 
 (async () => {
   const renderProperties = async () => {
     const fetch = async () => {
-      const { data: properties } = await axios.get(
+      const { data: properties } = await Axios.get(
         `${process.env.API_URL}/properties`
       );
 
