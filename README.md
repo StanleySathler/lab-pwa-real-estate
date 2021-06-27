@@ -1,3 +1,9 @@
+## Demo
+
+> ⚠️ Since it uses a free Heroku tier, data loading may take some seconds. There's no UI loading indicator. You'll see an empty list for a few seconds which will then be populated by a list of properties.
+
+https://lab-pwa-real-estate.vercel.app/
+
 ## What
 
 This is a small toy app that lists fake properties on sale. It's not indended to be a real product.
