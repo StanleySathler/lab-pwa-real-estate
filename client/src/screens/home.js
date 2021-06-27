@@ -1,4 +1,5 @@
 import PropertyCard from "../design-system/property-card";
+import "./home.css";
 
 (async () => {
   const renderProperties = async () => {
