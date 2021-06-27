@@ -5,6 +5,13 @@
   display: flex;
   width: 100%;
   overflow: hidden;
+  flex-direction: column;
+}
+
+@media (min-width: 376px) {
+  .property {
+    flex-direction: row;
+  }
 }
 
 .property:hover {
@@ -12,7 +19,13 @@
 }
 
 .property .property__photo {
-  max-width: 250px;
+  width: 100%;
+}
+
+@media (min-width: 376px) {
+  .property .property__photo {
+    max-width: 250px;
+  }
 }
 
 .property .property__photo img {
