@@ -3,8 +3,8 @@ self.addEventListener("install", () => {});
 const appShellReqs = [
   "/",
   "/dist/main.js",
-  "/axios/dist/axios.min.js",
   "/dist/main.css",
+  "https://fonts.googleapis.com/css2?family=Hind:wght@400;500&display=swap",
 ];
 
 const dataReqs = ["/properties"];
